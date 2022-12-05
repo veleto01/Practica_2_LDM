@@ -29,4 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,administrarMedicamentos.class);
         startActivity(intent);
     }
+
+    public void verMedicamentos(View view){
+        Intent intent = new Intent(this,verMedicamentos.class);
+        startActivity(intent);
+    }
 }
