@@ -7,12 +7,22 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class adminBD extends AppCompatActivity {
+
+    //MediaPlayer
+    MediaPlayer sonido;
+
+    //Inicializamos los botones para el sonido
+    Button EliminarButton;
+    Button RegistrarButton;
+    Button ModificarButton;
 
     //EditText
     EditText EditCodigo,EditNombre,EditDescripcion,EditPrecio;
@@ -29,6 +39,10 @@ public class adminBD extends AppCompatActivity {
         EditNombre = findViewById(R.id.nombre_EditText);
         EditDescripcion = findViewById(R.id.Descripcion_EditText);
         EditPrecio = findViewById(R.id.precio_EditText);
+
+        EliminarButton = (Button) findViewById(R.id.eliminarButton);
+        RegistrarButton = (Button) findViewById(R.id.registrarButton);
+        ModificarButton = (Button) findViewById(R.id.modificarButton);
     }
 
     public void Eliminar(View view){
@@ -48,8 +62,12 @@ public class adminBD extends AppCompatActivity {
             //Comprobaremos el valor de la variable comprobación
             if(comprobacion == 1){
                 Toast.makeText(this, "El medicamento ha sido eliminado", Toast.LENGTH_SHORT).show();
+                sonido = MediaPlayer.create(this,R.raw.sonidobien);
+                sonido.start();
             }else{
                 Toast.makeText(this, "El medicamento no ha podido ser eliminado", Toast.LENGTH_SHORT).show();
+                sonido = MediaPlayer.create(this,R.raw.botonmal);
+                sonido.start();
             }
         }else{
             Toast.makeText(this, "No has introducido código", Toast.LENGTH_SHORT).show();
@@ -83,8 +101,12 @@ public class adminBD extends AppCompatActivity {
             //Comprobaremos el valor de la variable comprobación
             if(comprobacion== 1 ){
                 Toast.makeText(this, "El medicamento ha sido modificado correctamente", Toast.LENGTH_LONG).show();
+                sonido = MediaPlayer.create(this,R.raw.sonidobien);
+                sonido.start();
             }else{
                 Toast.makeText(this, "El medicamento no existe ", Toast.LENGTH_SHORT).show();
+                sonido = MediaPlayer.create(this,R.raw.botonmal);
+                sonido.start();
             }
         }else{
             Toast.makeText(this, "Faltan campos obligatarios", Toast.LENGTH_SHORT).show();
@@ -102,7 +124,7 @@ public class adminBD extends AppCompatActivity {
 
         //Filtraremos que campos son necesarios para poder insertar a la base de datos.
         //En este caso solo hará falta El codigo la descripcion y el precio
-        if(!Codigo.isEmpty() && !Descripcion.isEmpty() && !Precio.isEmpty()){
+        if(!Codigo.isEmpty() && !nombre.isEmpty() && !Precio.isEmpty()){
             //Inicializamos el puntero de la tabla con la clase ContentValues para poder ir iterando con ella
             ContentValues puntero = new ContentValues();
             puntero.put("codigo",Codigo);
@@ -119,11 +141,19 @@ public class adminBD extends AppCompatActivity {
             //Comprobaremos el valor de la variable comprobación
             if(comprobacion== -1 ){
                 Toast.makeText(this, "El medicamento ya existe o se ha puesto  mal algun dato", Toast.LENGTH_LONG).show();
+                sonido = MediaPlayer.create(this,R.raw.botonmal);
+                sonido.start();
+
+
             }else{
                 Toast.makeText(this, "Medicamento registrado correctamente ", Toast.LENGTH_SHORT).show();
+                sonido = MediaPlayer.create(this,R.raw.sonidobien);
+                sonido.start();
             }
         }else{
             Toast.makeText(this, "Faltan campos obligatarios", Toast.LENGTH_SHORT).show();
+            sonido = MediaPlayer.create(this,R.raw.botonmal);
+            sonido.start();
         }
     }
     public void limpiar(){

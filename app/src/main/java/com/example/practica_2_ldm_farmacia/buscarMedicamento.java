@@ -30,7 +30,7 @@ public class buscarMedicamento extends AppCompatActivity {
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#1D7214")));
         this.setTitle(R.string.mi_titulo);
         //Inicializamos el edit text con el creado en el codigo para poder tratarlo.
-        nombreBuscar = (EditText) findViewById(R.id.nombreBuscar);
+        nombreBuscar = (EditText) findViewById(R.id.nombreABuscarPlainText);
     }
 
     public void buscar(View view){
@@ -38,15 +38,13 @@ public class buscarMedicamento extends AppCompatActivity {
         dbHelper bd = new dbHelper(this,"farmacia_bd",null,1);
         SQLiteDatabase ADMIN = bd.getReadableDatabase();
 
-
         //Filtraremos por el nombre del medicamento.
         String nombreABuscar = nombreBuscar.getText().toString();
+
         if(!nombreABuscar.isEmpty()){
-
-
             String[] campos = {"codigo","nombre","descripcion","precio"};
             //Inicializamos el cursor que buscará por la base de datos
-            Cursor cursor = ADMIN.rawQuery("select * from medicamentos where descripcion='"+nombreABuscar+"'",null);
+            Cursor cursor = ADMIN.rawQuery("select * from medicamentos where nombre='"+nombreABuscar+"'",null);
             //Con un try, nos encargamos de la gestion de errores por si no hubiera elemento en la tabla
             try{
                 cursor.moveToFirst();
@@ -71,6 +69,4 @@ public class buscarMedicamento extends AppCompatActivity {
             Toast.makeText(this, "No has escrito nada", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }

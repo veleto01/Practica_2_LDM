@@ -33,7 +33,7 @@
         app:srcCompat="@drawable/swiss_pharmacy_logo__old__svg" />
 
     <Button
-        android:id="@+id/verMedicamento"
+        android:id="@+id/registrarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#1D7214"

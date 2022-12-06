@@ -3,9 +3,11 @@ package com.example.practica_2_ldm_farmacia;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class resultadoMedicamento extends AppCompatActivity {
@@ -37,5 +39,11 @@ public class resultadoMedicamento extends AppCompatActivity {
         cod = findViewById(R.id.precioTEXTVIEW);
         cod.setText(this.precio);
 
+    }
+
+
+    public void mainActivity(View view){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }
