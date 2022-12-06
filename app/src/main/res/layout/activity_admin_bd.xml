@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Descripcion"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Descripcion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.781"
@@ -110,7 +110,7 @@
         app:layout_constraintVertical_bias="0.881" />
 
     <Button
-        android:id="@+id/registrar_editText"
+        android:id="@+id/verMedicamento"
         android:layout_width="124dp"
         android:layout_height="49dp"
         android:backgroundTint="#1D7214"
@@ -143,9 +143,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Nombre"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.736"

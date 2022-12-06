@@ -30,5 +30,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,adminBD.class);
         startActivity(intent);
     }
+    public void verMedicamento(View view){
+        Intent intent = new Intent(this,buscarMedicamento.class);
+        startActivity(intent);
+    }
+
+    public void publicidad(View view){
+        Intent intent = new Intent(this,publicidad.class);
+        startActivity(intent);
+    }
 
 }
